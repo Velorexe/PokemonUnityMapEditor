@@ -12,15 +12,18 @@ public class EditorCamera : MonoBehaviour
 
     //Invisible to Unity
     public GameObject CurrentObject;
-    private string TextureName;
     private Texture ObjectTexture;
 
     private GameObject ghostObject;
 
     private bool isDeleting;
 
+    public ButtonMenuItem CurrentItem;
+    private EditStyle editStyle;
+
     private DragTypes dragType = DragTypes.FREE;
     private bool isDragging;
+    private bool dragPositionDone;
     private Vector3 dragPosition;
     private List<GameObject> dragGhostObjects = new List<GameObject>();
 
@@ -36,6 +39,12 @@ public class EditorCamera : MonoBehaviour
         ghostObject = Instantiate(CurrentObject, FixToGrid(gridPosition.point, /*ghostObject.GetComponent<Renderer>().bounds.size.y / 2*/ 0.001f), new Quaternion());
         ghostObject.GetComponent<Renderer>().materials = SetTextureAndRenderMode(ghostObject.GetComponent<Renderer>().materials, ObjectTexture);
         ghostObject.GetComponent<Renderer>().materials[0] = GhostifyMaterial(ghostObject.GetComponent<Renderer>().materials[0], 2);
+
+        Color buttonHighlight = CurrentItem.ButtonImage.color;
+        buttonHighlight.a = 0;
+
+        CurrentItem.ButtonImage.color = buttonHighlight;
+        editStyle = CurrentItem.EditStyle;
     }
 
     private void Update()
@@ -46,49 +55,77 @@ public class EditorCamera : MonoBehaviour
         #region MouseInput
         if (Input.GetMouseButtonUp(0) && !EventSystem.current.IsPointerOverGameObject())
         {
-            if (isDragging && dragGhostObjects.Count > 0)
+            switch (editStyle)
             {
-                foreach (GameObject dragObject in dragGhostObjects)
-                {
-                    GameObject newObject = Instantiate(CurrentObject, dragObject.transform.position, ghostObject.transform.rotation);
-                    newObject.GetComponent<Renderer>().materials = SetTextureAndRenderMode(newObject.GetComponent<Renderer>().materials, ObjectTexture);
-                    newObject.layer = LayerMask.NameToLayer("EditObject");
-                    newObject.tag = "EditObject";
+                case EditStyle.OBJECT:
+                    if (isDragging && dragGhostObjects.Count > 0)
+                    {
+                        foreach (GameObject dragObject in dragGhostObjects)
+                        {
+                            GameObject newObject = Instantiate(CurrentObject, dragObject.transform.position, ghostObject.transform.rotation);
+                            newObject.GetComponent<Renderer>().materials = SetTextureAndRenderMode(newObject.GetComponent<Renderer>().materials, ObjectTexture);
+                            newObject.layer = LayerMask.NameToLayer("EditObject");
+                            newObject.tag = "EditObject";
 
-                    if (newObject.GetComponent<Collider>() == null)
-                        newObject.AddComponent<MeshCollider>();
+                            if (newObject.GetComponent<Collider>() == null)
+                                newObject.AddComponent<MeshCollider>();
 
-                    Destroy(dragObject);
-                }
-                dragGhostObjects = new List<GameObject>();
+                            Destroy(dragObject);
+                        }
+                        dragGhostObjects = new List<GameObject>();
+                    }
+                    else
+                    {
+                        GameObject newObject = Instantiate(CurrentObject, ghostObject.transform.position, ghostObject.transform.rotation);
+                        newObject.GetComponent<Renderer>().materials = SetTextureAndRenderMode(newObject.GetComponent<Renderer>().materials, ObjectTexture);
+                        newObject.layer = LayerMask.NameToLayer("EditObject");
+                        newObject.tag = "EditObject";
+
+                        if (newObject.GetComponent<Collider>() == null)
+                            newObject.AddComponent<MeshCollider>();
+                    }
+                    isDragging = false;
+                    dragPositionDone = false;
+                    break;
+                case EditStyle.PAINT:
+                    if (gridPosition.transform.gameObject.tag == "EditObject" && !isDragging)
+                    {
+                        PaintObject(gridPosition.transform.gameObject, ObjectTexture);
+                    }
+                    isDragging = false;
+                    dragPositionDone = false;
+                    break;
+                default:
+                    break;
             }
-            else
-            {
-                GameObject newObject = Instantiate(CurrentObject, ghostObject.transform.position, ghostObject.transform.rotation);
-                newObject.GetComponent<Renderer>().materials = SetTextureAndRenderMode(newObject.GetComponent<Renderer>().materials, ObjectTexture);
-                newObject.layer = LayerMask.NameToLayer("EditObject");
-                newObject.tag = "EditObject";
-
-                if (newObject.GetComponent<Collider>() == null)
-                    newObject.AddComponent<MeshCollider>();
-            }
-            isDragging = false;
         }
         else if ((Input.GetMouseButtonDown(0) || isDragging) && !EventSystem.current.IsPointerOverGameObject())
         {
             if (!isDragging)
-            {
                 dragPosition = ghostObject.transform.position;
-            }
             isDragging = true;
 
             Vector3 ghostNewPosition = FixToGrid(gridPosition.point, /*ghostObject.GetComponent<Renderer>().bounds.size.y / 2*/ 0.001f);
-            switch (dragType)
+            if (editStyle == EditStyle.OBJECT)
             {
-                case DragTypes.FREE:
-                    if (ghostNewPosition != dragPosition)
-                    {
-                        if (IsOverlapping(ghostNewPosition) == false)
+                switch (dragType)
+                {
+                    case DragTypes.FREE:
+                        if (ghostNewPosition != dragPosition)
+                        {
+                            if (IsOverlapping(ghostNewPosition) == false)
+                            {
+                                GameObject dragGhost = CurrentObject;
+
+                                dragGhost = Instantiate(dragGhost, ghostNewPosition, ghostObject.transform.rotation);
+                                dragGhost.GetComponent<Renderer>().materials[0].SetTexture("_MainTex", ObjectTexture);
+                                dragGhost.GetComponent<Renderer>().materials[0] = GhostifyMaterial(dragGhost.GetComponent<Renderer>().materials[0], 3);
+
+                                dragGhostObjects.Add(dragGhost);
+                                ghostObject.transform.position = ghostNewPosition;
+                            }
+                        }
+                        else if (!dragPositionDone)
                         {
                             GameObject dragGhost = CurrentObject;
 
@@ -98,60 +135,54 @@ public class EditorCamera : MonoBehaviour
 
                             dragGhostObjects.Add(dragGhost);
                             ghostObject.transform.position = ghostNewPosition;
+                            dragPositionDone = true;
                         }
-                    }
-                    break;
-                case DragTypes.SQUARE:
-                    if (ghostNewPosition != dragPosition)
-                    {
-                        foreach (GameObject oldGhost in dragGhostObjects)
-                            Destroy(oldGhost);
-                        dragGhostObjects = new List<GameObject>();
-                        int differenceX = 1;
-                        int differenceZ = 1;
-
-                        if (dragPosition.x > ghostNewPosition.x)
-                            differenceX = -1;
-
-                        if (dragPosition.z > ghostNewPosition.z)
-                            differenceZ = -1;
-
-                        for (int i = 0; i < Math.Abs(dragPosition.x - ghostNewPosition.x) + 1; i++)
+                        break;
+                    case DragTypes.SQUARE:
+                        if (ghostNewPosition != dragPosition)
                         {
-                            for (int j = 0; j < Math.Abs(dragPosition.z - ghostNewPosition.z) + 1; j++)
+                            foreach (GameObject oldGhost in dragGhostObjects)
+                                Destroy(oldGhost);
+                            dragGhostObjects = new List<GameObject>();
+                            int differenceX = 1;
+                            int differenceZ = 1;
+
+                            if (dragPosition.x > ghostNewPosition.x)
+                                differenceX = -1;
+
+                            if (dragPosition.z > ghostNewPosition.z)
+                                differenceZ = -1;
+
+                            for (int i = 0; i < Math.Abs(dragPosition.x - ghostNewPosition.x) + 1; i++)
                             {
-                                Vector3 squareDragPosition = new Vector3(dragPosition.x + (differenceX * i), ghostNewPosition.y, dragPosition.z + (differenceZ * j));
-                                GameObject dragGhost = CurrentObject;
+                                for (int j = 0; j < Math.Abs(dragPosition.z - ghostNewPosition.z) + 1; j++)
+                                {
+                                    Vector3 squareDragPosition = new Vector3(dragPosition.x + (differenceX * i), ghostNewPosition.y, dragPosition.z + (differenceZ * j));
+                                    GameObject dragGhost = CurrentObject;
 
-                                dragGhost = Instantiate(dragGhost, squareDragPosition, ghostObject.transform.rotation);
-                                dragGhost.GetComponent<Renderer>().materials[0].SetTexture("_MainTex", ObjectTexture);
-                                dragGhost.GetComponent<Renderer>().materials[0] = GhostifyMaterial(dragGhost.GetComponent<Renderer>().materials[0], 3);
+                                    dragGhost = Instantiate(dragGhost, squareDragPosition, ghostObject.transform.rotation);
+                                    dragGhost.GetComponent<Renderer>().materials[0].SetTexture("_MainTex", ObjectTexture);
+                                    dragGhost.GetComponent<Renderer>().materials[0] = GhostifyMaterial(dragGhost.GetComponent<Renderer>().materials[0], 3);
 
-                                dragGhostObjects.Add(dragGhost);
-                                ghostObject.transform.position = ghostNewPosition;
+                                    dragGhostObjects.Add(dragGhost);
+                                    ghostObject.transform.position = ghostNewPosition;
+                                }
                             }
                         }
-                    }
-                    break;
-                default:
-                    break;
+                        break;
+                    default:
+                        break;
+                }
             }
-
-            //Vector3 ghostNewPosition = FixToGrid(gridPosition.point, /*ghostObject.GetComponent<Renderer>().bounds.size.y / 2*/ 0.001f);
-            //if (ghostNewPosition != dragPosition)
-            //{
-            //    if (IsOverlapping(ghostNewPosition) == false)
-            //    {
-            //        GameObject dragGhost = CurrentObject;
-
-            //        dragGhost = Instantiate(dragGhost, ghostNewPosition, ghostObject.transform.rotation);
-            //        dragGhost.GetComponent<Renderer>().materials[0].SetTexture("_MainTex", ObjectTexture);
-            //        dragGhost.GetComponent<Renderer>().materials[0] = GhostifyMaterial(dragGhost.GetComponent<Renderer>().materials[0], 3);
-
-            //        dragGhostObjects.Add(dragGhost);
-            //        ghostObject.transform.position = ghostNewPosition;
-            //    }
-            //}
+            else if(editStyle == EditStyle.PAINT)
+            {
+                if (gridPosition.transform.gameObject.tag == "EditObject" && ((ghostNewPosition != dragPosition && !IsOverlapping(gridPosition.point)) || !dragPositionDone))
+                {
+                    if (ghostNewPosition == dragPosition)
+                        dragPositionDone = true;
+                    PaintObject(gridPosition.transform.gameObject, ObjectTexture);
+                }
+            }
         }
         else if (Input.GetMouseButtonUp(1))
         {
@@ -184,6 +215,11 @@ public class EditorCamera : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.S))
             yOffset--;
         #endregion
+    }
+
+    private void PaintObject(GameObject targetObject, Texture targetTexture)
+    {
+        targetObject.GetComponent<Renderer>().materials = SetTextureAndRenderMode(targetObject.GetComponent<Renderer>().materials, targetTexture);
     }
 
     public void SetDragType(UnityEngine.UI.Dropdown dropdownMenu)
@@ -276,6 +312,7 @@ public class EditorCamera : MonoBehaviour
 
         Destroy(ghostObject);
         ghostObject = Instantiate(CurrentObject, FixToGrid(gridPosition.point, CurrentObject.GetComponent<Renderer>().bounds.size.y / 2), new Quaternion());
+
         ghostObject.GetComponent<Renderer>().materials[0].mainTexture = ObjectTexture;
         ghostObject.GetComponent<Renderer>().materials[0] = GhostifyMaterial(ghostObject.GetComponent<Renderer>().materials[0], 2);
     }
@@ -283,8 +320,37 @@ public class EditorCamera : MonoBehaviour
     public void SetMaterial(MaterialListItem materialContainer)
     {
         ObjectTexture = materialContainer.ObjectThumbnail.mainTexture;
-        TextureName = materialContainer.ObjectName.text;
         ghostObject.GetComponent<Renderer>().materials[0].mainTexture = ObjectTexture;
+    }
+
+    public void SetEditType(ButtonMenuItem buttonItem)
+    {
+        editStyle = buttonItem.EditStyle;
+        Color buttonHighlight = buttonItem.ButtonImage.color;
+        CurrentItem.ButtonImage.color = buttonHighlight;
+
+        buttonHighlight.a = 0;
+        buttonItem.ButtonImage.color = buttonHighlight;
+
+        editStyle = buttonItem.EditStyle;
+        CurrentItem = buttonItem;
+        UpdateEditStyle();
+    }
+
+    private void UpdateEditStyle()
+    {
+        switch (editStyle)
+        {
+            case EditStyle.INSPECT:
+                ghostObject.SetActive(false);
+                break;
+            case EditStyle.PAINT:
+                ghostObject.SetActive(false);
+                break;
+            case EditStyle.OBJECT:
+                ghostObject.SetActive(true);
+                break;
+        }
     }
 
     private enum DragTypes
@@ -293,7 +359,7 @@ public class EditorCamera : MonoBehaviour
         SQUARE
     }
 
-    private enum EditStyle
+    public enum EditStyle
     {
         OBJECT,
         PAINT,

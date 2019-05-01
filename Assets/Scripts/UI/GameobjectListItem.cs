@@ -7,6 +7,7 @@ public class GameobjectListItem : MonoBehaviour
 {
     public Image ObjectThumbnail;
     public Text ObjectName;
+    public Text ObjectCatagorie;
 
     public GameObject Object;
 }
