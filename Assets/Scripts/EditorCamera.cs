@@ -29,6 +29,7 @@ public class EditorCamera : MonoBehaviour
 
         ghostObject = Instantiate(CurrentObject, FixToGrid(gridPosition.point, CurrentObject.GetComponent<Renderer>().bounds.size.y / 2), new Quaternion());
         ghostObject.GetComponent<Renderer>().materials[0] = GhostifyMaterial(ghostObject.GetComponent<Renderer>().materials[0], 2);
+        ghostObject.GetComponent<Renderer>().materials[0].mainTexture = ObjectTexture;
     }
 
     private void Update()
@@ -40,7 +41,7 @@ public class EditorCamera : MonoBehaviour
                 foreach(GameObject dragObject in dragGhostObjects)
                 {
                     GameObject newObject = Instantiate(CurrentObject, dragObject.transform.position, new Quaternion());
-                    newObject.GetComponent<Renderer>().materials[0].SetTexture(TextureName, ObjectTexture);
+                    newObject.GetComponent<Renderer>().materials[0].mainTexture = ObjectTexture;
                     newObject.layer = LayerMask.NameToLayer("EditObject");
                     newObject.tag = "EditObject";
 
@@ -51,7 +52,7 @@ public class EditorCamera : MonoBehaviour
             else
             {
                 GameObject newObject = Instantiate(CurrentObject, ghostObject.transform.position, new Quaternion());
-                newObject.GetComponent<Renderer>().materials[0].SetTexture(TextureName, ObjectTexture);
+                newObject.GetComponent<Renderer>().materials[0].mainTexture = ObjectTexture;
                 newObject.layer = LayerMask.NameToLayer("EditObject");
                 newObject.tag = "EditObject";
             }
@@ -79,7 +80,7 @@ public class EditorCamera : MonoBehaviour
                     GameObject dragGhost = CurrentObject;
 
                     dragGhost = Instantiate(dragGhost, ghostNewPosition, new Quaternion());
-                    dragGhost.GetComponent<Renderer>().materials[0].SetTexture(TextureName, ObjectTexture);
+                    dragGhost.GetComponent<Renderer>().materials[0].mainTexture = ObjectTexture;
                     dragGhost.GetComponent<Renderer>().materials[0] = GhostifyMaterial(dragGhost.GetComponent<Renderer>().materials[0], 3);
 
                     dragGhostObjects.Add(dragGhost);
@@ -94,9 +95,7 @@ public class EditorCamera : MonoBehaviour
             Physics.Raycast(mouseRay, out RaycastHit gridPosition, int.MaxValue, BuildMask);
 
             if (gridPosition.transform.tag == "EditObject")
-            {
                 Destroy(gridPosition.transform.gameObject);
-            }
         }
         else
         {

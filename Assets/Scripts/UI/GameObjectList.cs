@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
@@ -25,7 +26,8 @@ public class GameObjectList : MonoBehaviour
             GameobjectListItem listItemScript = newTileItem.GetComponent<GameobjectListItem>();
 
             Texture2D objectThumbnail = AssetPreview.GetAssetPreview(terrainTile);
-            listItemScript.ObjectThumbnail.sprite = Sprite.Create(objectThumbnail, new Rect(0.0f, 0.0f, objectThumbnail.width, objectThumbnail.height), new Vector2(), 100.0f);
+            if(objectThumbnail != null)
+                listItemScript.ObjectThumbnail.sprite = Sprite.Create(objectThumbnail, new Rect(0.0f, 0.0f, objectThumbnail.width, objectThumbnail.height), new Vector2(), 100.0f);
             listItemScript.ObjectName.text = terrainTile.name;
             listItemScript.Object = terrainTile;
 
