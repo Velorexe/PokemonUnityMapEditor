@@ -13,7 +13,6 @@ public class EditorCamera : MonoBehaviour
     public EditorCameraBehaviour CameraBehaviour;
 
     public LayerMask BuildMask;
-    public LayerMask UIMask;
 
     //Invisible to Unity
     private GameObject ghostObject;
@@ -173,6 +172,6 @@ public class EditorCamera : MonoBehaviour
     {
         ObjectTexture = materialContainer.ObjectThumbnail.mainTexture;
         TextureName = materialContainer.ObjectName.text;
-        ghostObject.GetComponent<Renderer>().materials[0].SetTexture(TextureName, ObjectTexture);
+        ghostObject.GetComponent<Renderer>().materials[0].mainTexture = ObjectTexture;
     }
 }
