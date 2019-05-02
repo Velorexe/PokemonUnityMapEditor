@@ -28,7 +28,8 @@ public class GameObjectList : MonoBehaviour
             GameObject newTileItem = gameobjectItem;
             GameobjectListItem listItemScript = newTileItem.GetComponent<GameobjectListItem>();
 
-            Texture2D objectThumbnail = AssetPreview.GetAssetPreview(terrainTile);
+
+            Texture2D objectThumbnail = RuntimePreviewGenerator.GenerateModelPreview(terrainTile.transform);
             if(objectThumbnail != null)
                 listItemScript.ObjectThumbnail.sprite = Sprite.Create(objectThumbnail, new Rect(0.0f, 0.0f, objectThumbnail.width, objectThumbnail.height), new Vector2(), 100.0f);
             listItemScript.ObjectName.text = terrainTile.name;
