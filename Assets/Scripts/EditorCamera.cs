@@ -20,8 +20,6 @@ public class EditorCamera : MonoBehaviour
 
     private GameObject ghostObject;
 
-    private bool isDeleting;
-
     public ButtonMenuItem CurrentItem;
     private EditStyle editStyle;
 
@@ -187,13 +185,8 @@ public class EditorCamera : MonoBehaviour
                 }
             }
         }
-        else if (Input.GetMouseButtonUp(1))
+        else if ((Input.GetMouseButtonDown(1)) && !EventSystem.current.IsPointerOverGameObject())
         {
-            isDeleting = false;
-        }
-        else if ((Input.GetMouseButtonDown(1) || isDeleting) && !EventSystem.current.IsPointerOverGameObject())
-        {
-            isDeleting = true;
             if (gridPosition.transform.tag == "EditObject")
                 Destroy(gridPosition.transform.gameObject);
             Vector3 ghostNewPosition = FixToGrid(gridPosition.point, /*ghostObject.GetComponent<Renderer>().bounds.size.y / 2*/ 0.001f);

@@ -29,7 +29,8 @@ public class CategoryManager : MonoBehaviour
         dropDownMenu = dropDown;
         CategoryPanel.SetActive(true);
 
-        foreach(GameObject listObject in ObjectList.items)
+        RectTransform rt = Content.GetComponent<RectTransform>();
+        foreach (GameObject listObject in ObjectList.Items)
         {
             GameObject newTileItem = ListItem;
             CategoryObjectListItem listItemScript = newTileItem.GetComponent<CategoryObjectListItem>();
@@ -43,6 +44,8 @@ public class CategoryManager : MonoBehaviour
             newTileItem = Instantiate(newTileItem) as GameObject;
             newTileItem.transform.SetParent(Content.transform);
             newTileItem.SetActive(true);
+
+            rt.sizeDelta = new Vector2(rt.rect.width, rt.rect.height + newTileItem.GetComponent<RectTransform>().rect.height);
         }
     }
 
@@ -50,6 +53,28 @@ public class CategoryManager : MonoBehaviour
     {
         dropDownMenu = dropDown;
         CategoryPanel.SetActive(true);
+
+        RectTransform rt = Content.GetComponent<RectTransform>();
+        foreach (GameObject listObject in ObjectList.Items)
+        {
+            GameObject newTileItem = ListItem;
+            CategoryObjectListItem listItemScript = newTileItem.GetComponent<CategoryObjectListItem>();
+            GameobjectListItem listItem = listObject.GetComponent<GameobjectListItem>();
+
+            listItemScript.ObjectThumbnail.sprite = listItem.ObjectThumbnail.sprite;
+            listItemScript.ObjectName.text = listItem.ObjectName.text;
+            listItemScript.Object = listItem.Object;
+            listItemScript.Item = listObject.GetComponent<GameobjectListItem>();
+
+            newTileItem = Instantiate(newTileItem) as GameObject;
+            newTileItem.transform.SetParent(Content.transform);
+            newTileItem.SetActive(true);
+
+            if (listItem.Categories.Contains(dropDown.options[dropDown.value].text))
+                listItemScript.Select();
+
+            rt.sizeDelta = new Vector2(rt.rect.width, rt.rect.height + newTileItem.GetComponent<RectTransform>().rect.height);
+        }
     }
 
     public void FinishCategory()
@@ -71,6 +96,8 @@ public class CategoryManager : MonoBehaviour
 
         dropDownMenu = null;
         CategoryName.text = string.Empty;
+
+        selectedItems = new List<CategoryObjectListItem>();
 
         foreach (Transform child in Content.transform)
             Destroy(child.gameObject);

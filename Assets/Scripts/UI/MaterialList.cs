@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEditor;
+using UnityEngine.UI;
 
 public class MaterialList : MonoBehaviour
 {
@@ -17,6 +17,7 @@ public class MaterialList : MonoBehaviour
 
     public void PopulateList()
     {
+        RectTransform rt = contentPanel.GetComponent<RectTransform>();
         foreach (Object terrainMaterial in terrainTiles)
         {
             GameObject newTileItem = gameobjectItem;
@@ -31,6 +32,8 @@ public class MaterialList : MonoBehaviour
             newTileItem = Instantiate(newTileItem) as GameObject;
             newTileItem.transform.SetParent(contentPanel);
             newTileItem.SetActive(true);
+
+            rt.sizeDelta = new Vector2(rt.rect.width, rt.rect.height + newTileItem.GetComponent<RectTransform>().rect.height);
         }
     }
 }

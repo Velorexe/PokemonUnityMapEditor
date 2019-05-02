@@ -9,7 +9,7 @@ public class GameObjectList : MonoBehaviour
     public Transform contentPanel;
     public List<GameObject> terrainTiles;
 
-    public List<GameObject> items { get; private set; } = new List<GameObject>();
+    public List<GameObject> Items { get; private set; } = new List<GameObject>();
 
     void Start()
     {
@@ -19,7 +19,8 @@ public class GameObjectList : MonoBehaviour
 
     public void PopulateList()
     {
-        foreach(GameObject terrainTile in terrainTiles)
+        RectTransform rt = contentPanel.GetComponent<RectTransform>();
+        foreach (GameObject terrainTile in terrainTiles)
         {
             GameObject newTileItem = gameobjectItem;
             GameobjectListItem listItemScript = newTileItem.GetComponent<GameobjectListItem>();
@@ -35,7 +36,8 @@ public class GameObjectList : MonoBehaviour
             newTileItem.transform.SetParent(contentPanel);
             newTileItem.SetActive(true);
 
-            items.Add(newTileItem);
+            Items.Add(newTileItem);
+            rt.sizeDelta = new Vector2(rt.rect.width, rt.rect.height + newTileItem.GetComponent<RectTransform>().rect.height);
         }
     }
 
@@ -46,7 +48,7 @@ public class GameObjectList : MonoBehaviour
 
         if (dropMenu.value != 0)
         {
-            foreach (GameObject item in items)
+            foreach (GameObject item in Items)
             {
                 if (item.GetComponent<GameobjectListItem>().Categories.Contains(dropMenu.options[dropMenu.value].text))
                     item.SetActive(true);
@@ -54,7 +56,7 @@ public class GameObjectList : MonoBehaviour
         }
         else
         {
-            foreach (GameObject item in items)
+            foreach (GameObject item in Items)
                 item.SetActive(true);
         }
     }
