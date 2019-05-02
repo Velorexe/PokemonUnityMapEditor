@@ -1,17 +1,21 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System;
 
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class EditorCamera : MonoBehaviour
 {
     //Visible to Unity
     public LayerMask BuildMask;
+    public GameObject CurrentObject;
+
+    public Text X;
+    public Text Y;
+    public Text Z;
 
     //Invisible to Unity
-    public GameObject CurrentObject;
     private Texture ObjectTexture;
 
     private GameObject ghostObject;
@@ -105,7 +109,7 @@ public class EditorCamera : MonoBehaviour
                 dragPosition = ghostObject.transform.position;
             isDragging = true;
 
-            Vector3 ghostNewPosition = FixToGrid(gridPosition.point, /*ghostObject.GetComponent<Renderer>().bounds.size.y / 2*/ 0.001f);
+            Vector3 ghostNewPosition = FixToGrid(gridPosition.point, /*ghostObject.GetComponent<Renderer>().bounds.size.y / 2*/ 0f);
             if (editStyle == EditStyle.OBJECT)
             {
                 switch (dragType)
@@ -116,7 +120,6 @@ public class EditorCamera : MonoBehaviour
                             if (IsOverlapping(ghostNewPosition) == false)
                             {
                                 GameObject dragGhost = CurrentObject;
-
                                 dragGhost = Instantiate(dragGhost, ghostNewPosition, ghostObject.transform.rotation);
                                 dragGhost.GetComponent<Renderer>().materials[0].SetTexture("_MainTex", ObjectTexture);
                                 dragGhost.GetComponent<Renderer>().materials[0] = GhostifyMaterial(dragGhost.GetComponent<Renderer>().materials[0], 3);
@@ -215,6 +218,12 @@ public class EditorCamera : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.S))
             yOffset--;
         #endregion
+
+        #region CoordinateUpdate;
+        X.text = "X: " + Math.Round(ghostObject.transform.position.x, 2);
+        Y.text = "Y: " + Math.Round(ghostObject.transform.position.y, 2);
+        Z.text = "Z: " + Math.Round(ghostObject.transform.position.z, 2);
+        #endregion
     }
 
     private void PaintObject(GameObject targetObject, Texture targetTexture)
@@ -300,6 +309,9 @@ public class EditorCamera : MonoBehaviour
             raycastHit.z = (float)(Math.Truncate(raycastHit.z) - 0.5);
         else
             raycastHit.z = (float)(Math.Truncate(raycastHit.z) + 0.5);
+
+        if (raycastHit.y == 0)
+            raycastHit.y += 0.0001f;
 
         return raycastHit;
     }
