@@ -11,8 +11,11 @@ public class GameObjectList : MonoBehaviour
 
     public List<GameObject> Items { get; private set; } = new List<GameObject>();
 
+    private Vector2 contentOriginalSize;
+
     void Start()
     {
+        contentOriginalSize = contentPanel.GetComponent<RectTransform>().sizeDelta;
         terrainTiles = Resources.LoadAll<GameObject>("TerrainTiles/Models").ToList();
         PopulateList();
     }
@@ -20,11 +23,11 @@ public class GameObjectList : MonoBehaviour
     public void PopulateList()
     {
         RectTransform rt = contentPanel.GetComponent<RectTransform>();
+        rt.sizeDelta = contentOriginalSize;
         foreach (GameObject terrainTile in terrainTiles)
         {
             GameObject newTileItem = gameobjectItem;
             GameobjectListItem listItemScript = newTileItem.GetComponent<GameobjectListItem>();
-
 
             Texture2D objectThumbnail = RuntimePreviewGenerator.GenerateModelPreview(terrainTile.transform);
             if(objectThumbnail != null)
@@ -43,21 +46,25 @@ public class GameObjectList : MonoBehaviour
 
     public void UpdateList(Dropdown dropMenu)
     {
-        foreach (Transform child in contentPanel.transform)
-            child.gameObject.SetActive(false);
-
-        if (dropMenu.value != 0)
+        RectTransform rt = contentPanel.GetComponent<RectTransform>();
+        rt.sizeDelta = contentOriginalSize;
+        foreach (GameObject listItem in Items)
         {
-            foreach (GameObject item in Items)
+            if (dropMenu.value != 0)
             {
-                if (item.GetComponent<GameobjectListItem>().Categories.Contains(dropMenu.options[dropMenu.value].text))
-                    item.SetActive(true);
+                if (listItem.GetComponent<GameobjectListItem>().Categories.Contains(dropMenu.options[dropMenu.value].text))
+                {
+                    listItem.SetActive(true);
+                    rt.sizeDelta = new Vector2(rt.rect.width, rt.rect.height + listItem.GetComponent<RectTransform>().rect.height);
+                }
+                else
+                    listItem.SetActive(false);
             }
-        }
-        else
-        {
-            foreach (GameObject item in Items)
-                item.SetActive(true);
+            else
+            {
+                listItem.SetActive(true);
+                rt.sizeDelta = new Vector2(rt.rect.width, rt.rect.height + listItem.GetComponent<RectTransform>().rect.height);
+            }
         }
     }
 }

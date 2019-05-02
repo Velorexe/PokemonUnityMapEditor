@@ -18,10 +18,12 @@ public class CategoryManager : MonoBehaviour
     private List<CategoryObjectListItem> selectedItems = new List<CategoryObjectListItem>();
 
     private Dropdown dropDownMenu;
+    private Vector2 contentOriginalSize;
 
     public void Start()
     {
         CategoryPanel.SetActive(false);
+        contentOriginalSize = Content.GetComponent<RectTransform>().sizeDelta;
     }
 
     public void AddCategory(Dropdown dropDown)
@@ -98,6 +100,8 @@ public class CategoryManager : MonoBehaviour
         CategoryName.text = string.Empty;
 
         selectedItems = new List<CategoryObjectListItem>();
+
+        Content.GetComponent<RectTransform>().sizeDelta = contentOriginalSize;
 
         foreach (Transform child in Content.transform)
             Destroy(child.gameObject);
