@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\EditorCameraBehaviour.cs" />
     <Compile Include="Assets\Scripts\UI\ButtonMenuItem.cs" />
     <Compile Include="Assets\Scripts\UI\CategoryManager.cs" />
+    <Compile Include="Assets\Scripts\UI\CategoryObjectListItem.cs" />
     <Compile Include="Assets\Scripts\UI\GameObjectList.cs" />
     <Compile Include="Assets\Scripts\UI\GameobjectListItem.cs" />
     <Compile Include="Assets\Scripts\UI\MaterialList.cs" />

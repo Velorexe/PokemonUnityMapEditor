@@ -9,5 +9,7 @@ public class GameobjectListItem : MonoBehaviour
     public Text ObjectName;
     public Text ObjectCatagorie;
 
+    public List<string> Categories;
+
     public GameObject Object;
 }

@@ -5,12 +5,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.UI;
 
 public class GameObjectList : MonoBehaviour
 {
     public GameObject gameobjectItem;
     public Transform contentPanel;
     public List<GameObject> terrainTiles;
+
+    public List<GameObject> items { get; private set; } = new List<GameObject>();
 
     void Start()
     {
@@ -34,6 +37,28 @@ public class GameObjectList : MonoBehaviour
             newTileItem = Instantiate(newTileItem) as GameObject;
             newTileItem.transform.SetParent(contentPanel);
             newTileItem.SetActive(true);
+
+            items.Add(newTileItem);
+        }
+    }
+
+    public void UpdateList(Dropdown dropMenu)
+    {
+        foreach (Transform child in contentPanel.transform)
+            child.gameObject.SetActive(false);
+
+        if (dropMenu.value != 0)
+        {
+            foreach (GameObject item in items)
+            {
+                if (item.GetComponent<GameobjectListItem>().Categories.Contains(dropMenu.options[dropMenu.value].text))
+                    item.SetActive(true);
+            }
+        }
+        else
+        {
+            foreach (GameObject item in items)
+                item.SetActive(true);
         }
     }
 }
