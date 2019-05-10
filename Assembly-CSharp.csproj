@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\EditorCamera.cs" />
     <Compile Include="Assets\Scripts\EditorCameraBehaviour.cs" />
+    <Compile Include="Assets\Scripts\UI\Attributes\ConditionalField.cs" />
     <Compile Include="Assets\Scripts\UI\ButtonMenuItem.cs" />
     <Compile Include="Assets\Scripts\UI\CategoryManager.cs" />
     <Compile Include="Assets\Scripts\UI\CategoryObjectListItem.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Assets\Scripts\UI\GameobjectListItem.cs" />
     <Compile Include="Assets\Scripts\UI\MaterialList.cs" />
     <Compile Include="Assets\Scripts\UI\MaterialListItem.cs" />
+    <Compile Include="Assets\Scripts\UI\ObjectDetails.cs" />
     <Compile Include="Assets\Scripts\UI\TabFold.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>F:/Unity/PokemonUnity Editor/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

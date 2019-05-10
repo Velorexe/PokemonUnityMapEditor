@@ -1,9 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.Xml.Serialization;
+using System.Xml;
+using System.IO;
 using System;
 
-using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine;
 
 public class EditorCamera : MonoBehaviour
 {
@@ -175,7 +178,7 @@ public class EditorCamera : MonoBehaviour
                         break;
                 }
             }
-            else if(editStyle == EditStyle.PAINT)
+            else if (editStyle == EditStyle.PAINT)
             {
                 if (gridPosition.transform.gameObject.tag == "EditObject" && ((ghostNewPosition != dragPosition && !IsOverlapping(gridPosition.point)) || !dragPositionDone))
                 {
@@ -224,7 +227,7 @@ public class EditorCamera : MonoBehaviour
         targetObject.GetComponent<Renderer>().materials = SetTextureAndRenderMode(targetObject.GetComponent<Renderer>().materials, targetTexture);
     }
 
-    public void SetDragType(UnityEngine.UI.Dropdown dropdownMenu)
+    public void SetDragType(Dropdown dropdownMenu)
     {
         switch (dropdownMenu.options[dropdownMenu.value].text)
         {
@@ -257,7 +260,7 @@ public class EditorCamera : MonoBehaviour
 
     private bool IsOverlapping(Vector3 dragGhostPosition)
     {
-        foreach(GameObject ghostObject in dragGhostObjects)
+        foreach (GameObject ghostObject in dragGhostObjects)
         {
             if (dragGhostPosition == ghostObject.transform.position)
                 return true;
@@ -291,7 +294,7 @@ public class EditorCamera : MonoBehaviour
         else
             raycastHit.x = (float)(Math.Truncate(raycastHit.x) + 0.5);
 
-        if(Math.Round(raycastHit.y, 0) == 0)
+        if (Math.Round(raycastHit.y, 0) == 0)
             raycastHit.y = 0 + yBound + yOffset;
         else if (raycastHit.y < 0)
             raycastHit.y = (float)(Math.Truncate(raycastHit.y) - yBound) + yOffset;
@@ -357,6 +360,69 @@ public class EditorCamera : MonoBehaviour
                 break;
         }
     }
+
+    public void Save()
+    {
+        GameObject[] objects = GameObject.FindGameObjectsWithTag("EditObject");
+        SerializeObject[] serializeObjects = new SerializeObject[objects.Length];
+        for (int i = 0; i < objects.Length; i++)
+            serializeObjects[i] = objects[i];
+
+        var output = JsonUtility.ToJson(new ObjectCollector(serializeObjects), true);
+
+        try
+        {
+            File.WriteAllText(Application.dataPath + @"/PKU Map Editor/Maps/CurrentMap.pku", output);
+        }
+        catch (DirectoryNotFoundException)
+        {
+            try
+            {
+                Directory.CreateDirectory(Application.dataPath + @"/PKU Map Editor/Maps");
+            }
+            catch(DirectoryNotFoundException)
+            {
+                Directory.CreateDirectory(Application.dataPath + @"/PKU Map Editor");
+            }
+            Directory.CreateDirectory(Application.dataPath + @"/PKU Map Editor/Maps");
+            File.WriteAllText(Application.dataPath + @"/PKU Map Editor/Maps/CurrentMap.pku", output);
+        }
+    }
+
+    [Serializable]
+    private class ObjectCollector
+    {
+        public SerializeObject[] Objects;
+
+        public ObjectCollector(SerializeObject[] serializeObjects)
+        {
+            Objects = serializeObjects;
+        }
+    }
+
+    [Serializable]
+    private class SerializeObject
+    {
+        public float X;
+        public float Y;
+        public float Z;
+
+        public Renderer ObjectRenderer;
+
+        public static implicit operator SerializeObject(GameObject gameObject)
+        {
+            SerializeObject returnObject = new SerializeObject
+            {
+                X = gameObject.transform.position.x,
+                Y = gameObject.transform.position.y,
+                Z = gameObject.transform.position.z,
+
+                ObjectRenderer = gameObject.GetComponent<Renderer>()
+            };
+            return returnObject;
+        }
+    }
+
 
     private enum DragTypes
     {
