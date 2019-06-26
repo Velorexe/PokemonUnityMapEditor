@@ -8,6 +8,8 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine;
 
+using UnityEditor.Formats.Fbx.Exporter;
+
 public class EditorCamera : MonoBehaviour
 {
     //Visible to Unity
@@ -363,64 +365,7 @@ public class EditorCamera : MonoBehaviour
 
     public void Save()
     {
-        GameObject[] objects = GameObject.FindGameObjectsWithTag("EditObject");
-        SerializeObject[] serializeObjects = new SerializeObject[objects.Length];
-        for (int i = 0; i < objects.Length; i++)
-            serializeObjects[i] = objects[i];
-
-        var output = JsonUtility.ToJson(new ObjectCollector(serializeObjects), true);
-
-        try
-        {
-            File.WriteAllText(Application.dataPath + @"/PKU Map Editor/Maps/CurrentMap.pku", output);
-        }
-        catch (DirectoryNotFoundException)
-        {
-            try
-            {
-                Directory.CreateDirectory(Application.dataPath + @"/PKU Map Editor/Maps");
-            }
-            catch(DirectoryNotFoundException)
-            {
-                Directory.CreateDirectory(Application.dataPath + @"/PKU Map Editor");
-            }
-            Directory.CreateDirectory(Application.dataPath + @"/PKU Map Editor/Maps");
-            File.WriteAllText(Application.dataPath + @"/PKU Map Editor/Maps/CurrentMap.pku", output);
-        }
-    }
-
-    [Serializable]
-    private class ObjectCollector
-    {
-        public SerializeObject[] Objects;
-
-        public ObjectCollector(SerializeObject[] serializeObjects)
-        {
-            Objects = serializeObjects;
-        }
-    }
-
-    [Serializable]
-    private class SerializeObject
-    {
-        public float X;
-        public float Y;
-        public float Z;
-
-        public Renderer ObjectRenderer;
-
-        public static implicit operator SerializeObject(GameObject gameObject)
-        {
-            SerializeObject returnObject = new SerializeObject
-            {
-                X = gameObject.transform.position.x,
-                Y = gameObject.transform.position.y,
-                Z = gameObject.transform.position.z,
-
-                ObjectRenderer = gameObject.GetComponent<Renderer>()
-            };
-            return returnObject;
-        }
+        ModelExporter.ExportObjects(Application.dataPath + @"/Exports/WorldMap.fbx", GameObject.FindGameObjectsWithTag("EditObject"));
     }
 
 
