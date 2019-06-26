@@ -365,8 +365,18 @@ public class EditorCamera : MonoBehaviour
 
     public void Save()
     {
-        string exportName = "WorldMap" + (Directory.GetFiles(Application.dataPath + @"/Exports").Length) + ".fbx";
-        ModelExporter.ExportObjects(Application.dataPath + @"/Exports" + exportName, GameObject.FindGameObjectsWithTag("EditObject"));
+        string exportName = "WorldMap - " + (Directory.GetFiles(Application.dataPath + @"/Exports").Length);
+        if (Application.isEditor)
+        {
+            exportName += ".fbx";
+            ModelExporter.ExportObjects(Application.dataPath + @"/Exports" + exportName, GameObject.FindGameObjectsWithTag("EditObject"));
+        }
+        else
+        {
+            exportName += ".obj";
+            ObjExporter exporter = new ObjExporter();
+            exporter.ExportMapToObj(exportName);
+        }
     }
 
 
