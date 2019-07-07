@@ -29,6 +29,10 @@ public class MaterialList : MonoBehaviour
                 listItemScript.ObjectThumbnail.sprite = (Sprite)terrainMaterial;
             listItemScript.ObjectName.text = terrainMaterial.name;
 
+            listItemScript.ObjectMaterial = new Material(Camera.main.GetComponent<EditorCamera>().StandardMaterial);
+            if (terrainMaterial.GetType() == typeof(Texture2D))
+                listItemScript.ObjectMaterial.mainTexture = terrainMaterial as Texture;
+
             newTileItem = Instantiate(newTileItem) as GameObject;
             newTileItem.transform.SetParent(contentPanel);
             newTileItem.SetActive(true);

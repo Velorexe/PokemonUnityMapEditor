@@ -6,6 +6,7 @@ TagManager:
   tags:
   - BuildPlatform
   - EditObject
+  - RenderChild
   layers:
   - Default
   - TransparentFX

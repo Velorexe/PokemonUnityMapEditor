@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Xml.Serialization;
+using System.Linq;
 using System.Xml;
 using System.IO;
 using System;
@@ -10,18 +11,22 @@ using UnityEngine;
 
 using UnityEditor.Formats.Fbx.Exporter;
 
+
 public class EditorCamera : MonoBehaviour
 {
     //Visible to Unity
     public LayerMask BuildMask;
     public GameObject CurrentObject;
+    public Material StandardMaterial;
+
+    public GameObject Parent;
 
     public Text X;
     public Text Y;
     public Text Z;
 
     //Invisible to Unity
-    private Texture ObjectTexture;
+    private Material ObjectTexture;
 
     private GameObject ghostObject;
 
@@ -43,8 +48,8 @@ public class EditorCamera : MonoBehaviour
         Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         Physics.Raycast(mouseRay, out RaycastHit gridPosition, int.MaxValue, BuildMask);
 
-        ghostObject = Instantiate(CurrentObject, FixToGrid(gridPosition.point, /*ghostObject.GetComponent<Renderer>().bounds.size.y / 2*/ 0.001f), new Quaternion());
-        ghostObject.GetComponent<Renderer>().materials = SetTextureAndRenderMode(ghostObject.GetComponent<Renderer>().materials, ObjectTexture);
+        ghostObject = Instantiate(CurrentObject, FixToGrid(gridPosition.point, /*ghostObject.GetComponent<Renderer>().bounds.size.y / 2*/ 0.001f), new Quaternion(), Parent.transform);
+        ghostObject.GetComponent<Renderer>().materials = new Material[] { new Material(ObjectTexture) };
         ghostObject.GetComponent<Renderer>().materials[0] = GhostifyMaterial(ghostObject.GetComponent<Renderer>().materials[0], 2);
 
         Color buttonHighlight = CurrentItem.ButtonImage.color;
@@ -69,8 +74,9 @@ public class EditorCamera : MonoBehaviour
                     {
                         foreach (GameObject dragObject in dragGhostObjects)
                         {
-                            GameObject newObject = Instantiate(CurrentObject, dragObject.transform.position, ghostObject.transform.rotation);
-                            newObject.GetComponent<Renderer>().materials = SetTextureAndRenderMode(newObject.GetComponent<Renderer>().materials, ObjectTexture);
+                            GameObject newObject = Instantiate(CurrentObject, dragObject.transform.position, ghostObject.transform.rotation, Parent.transform);
+                            newObject.name += "ID-{" + CurrentObject.name + " !-! " + ObjectTexture.mainTexture.name + "}";
+                            newObject.GetComponent<Renderer>().materials = new Material[] { new Material(ObjectTexture) };
                             newObject.layer = LayerMask.NameToLayer("EditObject");
                             newObject.tag = "EditObject";
 
@@ -84,7 +90,8 @@ public class EditorCamera : MonoBehaviour
                     else
                     {
                         GameObject newObject = Instantiate(CurrentObject, ghostObject.transform.position, ghostObject.transform.rotation);
-                        newObject.GetComponent<Renderer>().materials = SetTextureAndRenderMode(newObject.GetComponent<Renderer>().materials, ObjectTexture);
+                        newObject.name += "ID-{" + CurrentObject.name + " !-! " + ObjectTexture.mainTexture.name + "}";
+                        newObject.GetComponent<Renderer>().materials = new Material[] { new Material(ObjectTexture) };
                         newObject.layer = LayerMask.NameToLayer("EditObject");
                         newObject.tag = "EditObject";
 
@@ -123,8 +130,8 @@ public class EditorCamera : MonoBehaviour
                             if (IsOverlapping(ghostNewPosition) == false)
                             {
                                 GameObject dragGhost = CurrentObject;
-                                dragGhost = Instantiate(dragGhost, ghostNewPosition, ghostObject.transform.rotation);
-                                dragGhost.GetComponent<Renderer>().materials[0].SetTexture("_MainTex", ObjectTexture);
+                                dragGhost = Instantiate(dragGhost, ghostNewPosition, ghostObject.transform.rotation, Parent.transform);
+                                dragGhost.GetComponent<Renderer>().materials = new Material[] { new Material(ObjectTexture) };
                                 dragGhost.GetComponent<Renderer>().materials[0] = GhostifyMaterial(dragGhost.GetComponent<Renderer>().materials[0], 3);
 
                                 dragGhostObjects.Add(dragGhost);
@@ -135,8 +142,8 @@ public class EditorCamera : MonoBehaviour
                         {
                             GameObject dragGhost = CurrentObject;
 
-                            dragGhost = Instantiate(dragGhost, ghostNewPosition, ghostObject.transform.rotation);
-                            dragGhost.GetComponent<Renderer>().materials[0].SetTexture("_MainTex", ObjectTexture);
+                            dragGhost = Instantiate(dragGhost, ghostNewPosition, ghostObject.transform.rotation, Parent.transform);
+                            dragGhost.GetComponent<Renderer>().materials = new Material[] { new Material(ObjectTexture) };
                             dragGhost.GetComponent<Renderer>().materials[0] = GhostifyMaterial(dragGhost.GetComponent<Renderer>().materials[0], 3);
 
                             dragGhostObjects.Add(dragGhost);
@@ -166,8 +173,8 @@ public class EditorCamera : MonoBehaviour
                                     Vector3 squareDragPosition = new Vector3(dragPosition.x + (differenceX * i), ghostNewPosition.y, dragPosition.z + (differenceZ * j));
                                     GameObject dragGhost = CurrentObject;
 
-                                    dragGhost = Instantiate(dragGhost, squareDragPosition, ghostObject.transform.rotation);
-                                    dragGhost.GetComponent<Renderer>().materials[0].SetTexture("_MainTex", ObjectTexture);
+                                    dragGhost = Instantiate(dragGhost, squareDragPosition, ghostObject.transform.rotation, Parent.transform);
+                                    dragGhost.GetComponent<Renderer>().materials = new Material[] { new Material(ObjectTexture) };
                                     dragGhost.GetComponent<Renderer>().materials[0] = GhostifyMaterial(dragGhost.GetComponent<Renderer>().materials[0], 3);
 
                                     dragGhostObjects.Add(dragGhost);
@@ -224,9 +231,9 @@ public class EditorCamera : MonoBehaviour
         #endregion
     }
 
-    private void PaintObject(GameObject targetObject, Texture targetTexture)
+    private void PaintObject(GameObject targetObject, Material targetTexture)
     {
-        targetObject.GetComponent<Renderer>().materials = SetTextureAndRenderMode(targetObject.GetComponent<Renderer>().materials, targetTexture);
+        targetObject.GetComponent<Renderer>().materials = new Material[] { new Material(ObjectTexture) };
     }
 
     public void SetDragType(Dropdown dropdownMenu)
@@ -323,14 +330,14 @@ public class EditorCamera : MonoBehaviour
         Destroy(ghostObject);
         ghostObject = Instantiate(CurrentObject, FixToGrid(gridPosition.point, CurrentObject.GetComponent<Renderer>().bounds.size.y / 2), new Quaternion());
 
-        ghostObject.GetComponent<Renderer>().materials[0].mainTexture = ObjectTexture;
+        ghostObject.GetComponent<Renderer>().materials = new Material[] { new Material(ObjectTexture) };
         ghostObject.GetComponent<Renderer>().materials[0] = GhostifyMaterial(ghostObject.GetComponent<Renderer>().materials[0], 2);
     }
 
     public void SetMaterial(MaterialListItem materialContainer)
     {
-        ObjectTexture = materialContainer.ObjectThumbnail.mainTexture;
-        ghostObject.GetComponent<Renderer>().materials[0].mainTexture = ObjectTexture;
+        ObjectTexture = materialContainer.ObjectMaterial;
+        ghostObject.GetComponent<Renderer>().materials = new Material[] { materialContainer.ObjectMaterial };
     }
 
     public void SetEditType(ButtonMenuItem buttonItem)
@@ -363,19 +370,83 @@ public class EditorCamera : MonoBehaviour
         }
     }
 
+    private class MeshTile
+    {
+        public Vector3 position;
+        public Quaternion rotation;
+
+        public Transform transform;
+
+        public Mesh mesh;
+        public Material[] materials;
+    }
+
+    private class MeshTileGroup
+    {
+        public string ID;
+        public List<MeshTile> tiles = new List<MeshTile>();
+    }
+
     public void Save()
     {
+        //Hard coded value, only avaiable in Editor
+        bool useFBX = false;
+
+        List<Transform> childObjects = new List<Transform>();
+        foreach (Transform child in Parent.transform)
+            childObjects.Add(child);
+
+        List<MeshTileGroup> uniqueObjects = new List<MeshTileGroup>();
+        foreach(Transform child in childObjects)
+        {
+            string model = child.gameObject.name.Split(new string[] { "ID-{" }, StringSplitOptions.None)[1].Split(new string[] { " !-! " }, StringSplitOptions.None)[0];
+            string material = child.gameObject.name.Split(new string[] { "ID-{" }, StringSplitOptions.None)[1].Split(new string[] { " !-! " }, StringSplitOptions.None)[1];
+            material = material.Remove(material.Length - 1);
+
+            string id = model + "-" + material;
+            if(!uniqueObjects.Exists(x => x.ID == id))
+            {
+                uniqueObjects.Add(new MeshTileGroup() { ID = id, tiles = new List<MeshTile>() { new MeshTile() { position = child.position, rotation = child.rotation, transform = child, mesh = child.GetComponent<MeshFilter>().mesh, materials = child.GetComponent<Renderer>().materials } } });
+            }
+            else
+            {
+                uniqueObjects.Find(x => x.ID == id).tiles.Add(new MeshTile() { position = child.position, rotation = child.rotation, transform = child, mesh = child.GetComponent<MeshFilter>().mesh, materials = child.GetComponent<Renderer>().materials });
+            }
+        }
+        foreach(MeshTileGroup group in uniqueObjects)
+        {
+            GameObject groupObject = Instantiate(new GameObject(), Parent.transform);
+            groupObject.AddComponent<MeshFilter>();
+            groupObject.AddComponent<MeshRenderer>();
+            groupObject.name = group.ID;
+            groupObject.tag = "RenderChild";
+
+            SmartMeshData[] meshData = new SmartMeshData[group.tiles.Count];
+            for (int i = 0; i < group.tiles.Count; i++)
+            {
+                meshData[i] = new SmartMeshData(group.tiles[i].mesh, group.tiles[i].materials, group.tiles[i].position, group.tiles[i].rotation);
+            }
+
+            Mesh combinedMesh = groupObject.GetComponent<MeshFilter>().mesh = new Mesh();
+            combinedMesh.name = "Combined Mesh";
+
+            combinedMesh.CombineMeshesSmart(meshData, out Material[] combinedMaterials);
+            groupObject.GetComponent<MeshRenderer>().sharedMaterials = combinedMaterials;
+
+            for (int i = 0; i < group.tiles.Count; i++)
+                Destroy(group.tiles[i].transform.gameObject);
+        }
+
         string exportName = "WorldMap - " + (Directory.GetFiles(Application.dataPath + @"/Exports").Length);
-        if (Application.isEditor)
+        if (useFBX)
         {
             exportName += ".fbx";
-            ModelExporter.ExportObjects(Application.dataPath + @"/Exports" + exportName, GameObject.FindGameObjectsWithTag("EditObject"));
+            ModelExporter.ExportObjects(@"C:\Users\dvddv\Documents\PKU Editor Exports\" + exportName, GameObject.FindGameObjectsWithTag("RenderChild"));
         }
         else
         {
-            exportName += ".obj";
-            ObjExporter exporter = new ObjExporter();
-            exporter.ExportMapToObj(exportName);
+            objectExporter.ExportMesh(Parent);
+            //new ObjExporter().ExportMapToObj(@"C:\Users\dvddv\Documents\PKU Editor Exports", exportName);
         }
     }
 

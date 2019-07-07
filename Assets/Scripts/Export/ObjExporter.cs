@@ -24,7 +24,7 @@ struct ObjMaterial
     public byte[] data;
 }
 
-public class ObjExporter : MonoBehaviour
+public class ObjExporter
 {
     private static int vertexOffset = 0;
     private static int normalOffset = 0;
@@ -33,7 +33,7 @@ public class ObjExporter : MonoBehaviour
 
     //User should probably be able to change this. It is currently left as an excercise for
     //the reader.
-    private static string targetFolder = "ExportedObj";
+    private static string targetFolder = @"F:\Unity\PokemonUnity Editor\Assets\Exports";
 
 
     private static string MeshToString(MeshFilter mf, Dictionary<string, ObjMaterial> materialList)
@@ -226,16 +226,16 @@ public class ObjExporter : MonoBehaviour
         return true;
     }
 
-    public void ExportMapToObj(string fileLocation)
+    public void ExportMapToObj(string folderName, string fileName)
     {
         if (!CreateTargetFolder())
             return;
 
         List<Transform> selection = new List<Transform>();
 
-        foreach (Transform transform in GameObject.Find("Tiles").transform)
+        foreach (GameObject gameObject in GameObject.FindGameObjectsWithTag("EditObject"))
         {
-            selection.Add(transform);
+            selection.Add(gameObject.transform);
         }
 
         if (selection.Count == 0)
@@ -267,16 +267,7 @@ public class ObjExporter : MonoBehaviour
                 mf[i] = (MeshFilter)mfList[i];
             }
 
-            int stripIndex = fileLocation.LastIndexOf("\\");
-
-            targetFolder = fileLocation.Replace(fileLocation.Substring(stripIndex).Trim(), string.Empty);
-
-            if (stripIndex >= 0)
-                fileLocation = fileLocation.Substring(stripIndex + 1).Trim();
-
-            fileLocation = fileLocation.Replace(".obj", string.Empty);
-
-            MeshesToFile(mf, targetFolder, fileLocation);
+            MeshesToFile(mf, folderName, fileName);
         }
     }
 }

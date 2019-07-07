@@ -7,4 +7,6 @@ public class MaterialListItem : MonoBehaviour
 {
     public Image ObjectThumbnail;
     public Text ObjectName;
+
+    public Material ObjectMaterial;
 }
