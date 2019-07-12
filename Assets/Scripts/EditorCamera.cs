@@ -31,7 +31,7 @@ public class EditorCamera : MonoBehaviour
     public Text Z;
 
     //Invisible to Unity
-    private Material ObjectTexture;
+    private Texture ObjectTexture;
 
     private GameObject ghostObject;
 
@@ -54,7 +54,6 @@ public class EditorCamera : MonoBehaviour
         Physics.Raycast(mouseRay, out RaycastHit gridPosition, int.MaxValue, BuildMask);
 
         ghostObject = Instantiate(CurrentObject, FixToGrid(gridPosition.point, /*ghostObject.GetComponent<Renderer>().bounds.size.y / 2*/ 0.001f), new Quaternion(), Parent.transform);
-        ghostObject.GetComponent<Renderer>().materials = new Material[] { new Material(ObjectTexture) };
         ghostObject.GetComponent<Renderer>().materials[0] = GhostifyMaterial(ghostObject.GetComponent<Renderer>().materials[0], 2);
 
         Color buttonHighlight = CurrentItem.ButtonImage.color;
@@ -80,8 +79,12 @@ public class EditorCamera : MonoBehaviour
                         foreach (GameObject dragObject in dragGhostObjects)
                         {
                             GameObject newObject = Instantiate(CurrentObject, dragObject.transform.position, ghostObject.transform.rotation, Parent.transform);
-                            newObject.name += "ID-{" + CurrentObject.name + " !-! " + ObjectTexture.mainTexture.name + "}";
-                            newObject.GetComponent<Renderer>().materials = new Material[] { new Material(ObjectTexture) };
+                            newObject.name += "ID-{" + CurrentObject.name + " !-! " + ObjectTexture.name + "}";
+
+                            //newObject.GetComponent<Renderer>().materials = new Material[] { SetRenderMode(new Material(ObjectTexture)) };
+                            Material newMaterial = new Material(Shader.Find("Standard")) { mainTexture = ObjectTexture };
+                            newObject.GetComponent<Renderer>().sharedMaterial = SetRenderMode(newMaterial);
+
                             newObject.layer = LayerMask.NameToLayer("EditObject");
                             newObject.tag = "EditObject";
 
@@ -95,8 +98,12 @@ public class EditorCamera : MonoBehaviour
                     else
                     {
                         GameObject newObject = Instantiate(CurrentObject, ghostObject.transform.position, ghostObject.transform.rotation);
-                        newObject.name += "ID-{" + CurrentObject.name + " !-! " + ObjectTexture.mainTexture.name + "}";
-                        newObject.GetComponent<Renderer>().materials = new Material[] { new Material(ObjectTexture) };
+                        newObject.name += "ID-{" + CurrentObject.name + " !-! " + ObjectTexture.name + "}";
+
+                        //newObject.GetComponent<Renderer>().materials = new Material[] { SetRenderMode(new Material(ObjectTexture)) };
+                        Material newMaterial = new Material(Shader.Find("Standard")) { mainTexture = ObjectTexture };
+                        newObject.GetComponent<Renderer>().sharedMaterial = SetRenderMode(newMaterial);
+
                         newObject.layer = LayerMask.NameToLayer("EditObject");
                         newObject.tag = "EditObject";
 
@@ -109,7 +116,7 @@ public class EditorCamera : MonoBehaviour
                 case EditStyle.PAINT:
                     if (gridPosition.transform.gameObject.tag == "EditObject" && !isDragging)
                     {
-                        PaintObject(gridPosition.transform.gameObject, ObjectTexture);
+                        PaintObject(gridPosition.transform.gameObject);
                     }
                     isDragging = false;
                     dragPositionDone = false;
@@ -136,7 +143,10 @@ public class EditorCamera : MonoBehaviour
                             {
                                 GameObject dragGhost = CurrentObject;
                                 dragGhost = Instantiate(dragGhost, ghostNewPosition, ghostObject.transform.rotation, Parent.transform);
-                                dragGhost.GetComponent<Renderer>().materials = new Material[] { new Material(ObjectTexture) };
+                                //dragGhost.GetComponent<Renderer>().materials = new Material[] { new Material(ObjectTexture) };
+                                Material newMaterial = new Material(Shader.Find("Standard")) { mainTexture = ObjectTexture };
+                                dragGhost.GetComponent<Renderer>().sharedMaterial = SetRenderMode(newMaterial);
+
                                 dragGhost.GetComponent<Renderer>().materials[0] = GhostifyMaterial(dragGhost.GetComponent<Renderer>().materials[0], 3);
 
                                 dragGhostObjects.Add(dragGhost);
@@ -148,7 +158,9 @@ public class EditorCamera : MonoBehaviour
                             GameObject dragGhost = CurrentObject;
 
                             dragGhost = Instantiate(dragGhost, ghostNewPosition, ghostObject.transform.rotation, Parent.transform);
-                            dragGhost.GetComponent<Renderer>().materials = new Material[] { new Material(ObjectTexture) };
+                            //dragGhost.GetComponent<Renderer>().materials = new Material[] { new Material(ObjectTexture) };
+                            Material newMaterial = new Material(Shader.Find("Standard")) { mainTexture = ObjectTexture };
+                            dragGhost.GetComponent<Renderer>().sharedMaterial = SetRenderMode(newMaterial);
                             dragGhost.GetComponent<Renderer>().materials[0] = GhostifyMaterial(dragGhost.GetComponent<Renderer>().materials[0], 3);
 
                             dragGhostObjects.Add(dragGhost);
@@ -179,7 +191,9 @@ public class EditorCamera : MonoBehaviour
                                     GameObject dragGhost = CurrentObject;
 
                                     dragGhost = Instantiate(dragGhost, squareDragPosition, ghostObject.transform.rotation, Parent.transform);
-                                    dragGhost.GetComponent<Renderer>().materials = new Material[] { new Material(ObjectTexture) };
+                                    //dragGhost.GetComponent<Renderer>().materials = new Material[] { new Material(ObjectTexture) };
+                                    Material newMaterial = new Material(Shader.Find("Standard")) { mainTexture = ObjectTexture };
+                                    dragGhost.GetComponent<Renderer>().sharedMaterial = SetRenderMode(newMaterial);
                                     dragGhost.GetComponent<Renderer>().materials[0] = GhostifyMaterial(dragGhost.GetComponent<Renderer>().materials[0], 3);
 
                                     dragGhostObjects.Add(dragGhost);
@@ -198,7 +212,7 @@ public class EditorCamera : MonoBehaviour
                 {
                     if (ghostNewPosition == dragPosition)
                         dragPositionDone = true;
-                    PaintObject(gridPosition.transform.gameObject, ObjectTexture);
+                    PaintObject(gridPosition.transform.gameObject);
                 }
             }
         }
@@ -236,9 +250,10 @@ public class EditorCamera : MonoBehaviour
         #endregion
     }
 
-    private void PaintObject(GameObject targetObject, Material targetTexture)
+    private void PaintObject(GameObject targetObject)
     {
-        targetObject.GetComponent<Renderer>().materials = new Material[] { new Material(ObjectTexture) };
+        Material newMaterial = new Material(Shader.Find("Standard")) { mainTexture = ObjectTexture };
+        targetObject.GetComponent<Renderer>().sharedMaterial = newMaterial;
     }
 
     public void SetDragType(Dropdown dropdownMenu)
@@ -257,19 +272,18 @@ public class EditorCamera : MonoBehaviour
         }
     }
 
-    private Material[] SetTextureAndRenderMode(Material[] materials, Texture newTexture)
+    private Material SetRenderMode(Material material)
     {
-        Material returnMaterial = materials[0];
-        returnMaterial.EnableKeyword("_NORMALMAP");
-        returnMaterial.SetTexture("_MainTex", newTexture);
-        returnMaterial.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
-        returnMaterial.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
-        returnMaterial.SetInt("_ZWrite", 0);
-        returnMaterial.DisableKeyword("_ALPHATEST_ON");
-        returnMaterial.EnableKeyword("_ALPHABLEND_ON");
+        Material returnMaterial = material;
+        returnMaterial.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
+        returnMaterial.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.Zero);
+        returnMaterial.SetInt("_ZWrite", 1);
+        returnMaterial.EnableKeyword("_ALPHATEST_ON");
+        returnMaterial.DisableKeyword("_ALPHABLEND_ON");
         returnMaterial.DisableKeyword("_ALPHAPREMULTIPLY_ON");
+        returnMaterial.renderQueue = 2450;
         returnMaterial.renderQueue = 3000;
-        return new Material[] { returnMaterial };
+        return returnMaterial;
     }
 
     private bool IsOverlapping(Vector3 dragGhostPosition)
@@ -335,13 +349,15 @@ public class EditorCamera : MonoBehaviour
         Destroy(ghostObject);
         ghostObject = Instantiate(CurrentObject, FixToGrid(gridPosition.point, CurrentObject.GetComponent<Renderer>().bounds.size.y / 2), new Quaternion());
 
-        ghostObject.GetComponent<Renderer>().materials = new Material[] { new Material(ObjectTexture) };
+        //dragGhost.GetComponent<Renderer>().materials = new Material[] { new Material(ObjectTexture) };
+        Material newMaterial = new Material(Shader.Find("Standard")) { mainTexture = ObjectTexture };
+        ghostObject.GetComponent<Renderer>().sharedMaterial = newMaterial;
         ghostObject.GetComponent<Renderer>().materials[0] = GhostifyMaterial(ghostObject.GetComponent<Renderer>().materials[0], 2);
     }
 
     public void SetMaterial(MaterialListItem materialContainer)
     {
-        ObjectTexture = materialContainer.ObjectMaterial;
+        ObjectTexture = materialContainer.ObjectThumbnail.mainTexture;
         ghostObject.GetComponent<Renderer>().materials = new Material[] { materialContainer.ObjectMaterial };
     }
 
