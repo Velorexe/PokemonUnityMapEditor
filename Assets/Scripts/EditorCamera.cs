@@ -11,13 +11,18 @@ using UnityEngine;
 
 using UnityEditor.Formats.Fbx.Exporter;
 
+using ProBuilder2.MeshOperations;
+using ProBuilder2.Common;
+using ProBuilder2;
 
 public class EditorCamera : MonoBehaviour
 {
     //Visible to Unity
     public LayerMask BuildMask;
     public GameObject CurrentObject;
+
     public Material StandardMaterial;
+    public Shader StandardShader;
 
     public GameObject Parent;
 
@@ -390,64 +395,8 @@ public class EditorCamera : MonoBehaviour
     public void Save()
     {
         //Hard coded value, only avaiable in Editor
-        bool useFBX = false;
-
-        List<Transform> childObjects = new List<Transform>();
-        foreach (Transform child in Parent.transform)
-            childObjects.Add(child);
-
-        List<MeshTileGroup> uniqueObjects = new List<MeshTileGroup>();
-        foreach(Transform child in childObjects)
-        {
-            string model = child.gameObject.name.Split(new string[] { "ID-{" }, StringSplitOptions.None)[1].Split(new string[] { " !-! " }, StringSplitOptions.None)[0];
-            string material = child.gameObject.name.Split(new string[] { "ID-{" }, StringSplitOptions.None)[1].Split(new string[] { " !-! " }, StringSplitOptions.None)[1];
-            material = material.Remove(material.Length - 1);
-
-            string id = model + "-" + material;
-            if(!uniqueObjects.Exists(x => x.ID == id))
-            {
-                uniqueObjects.Add(new MeshTileGroup() { ID = id, tiles = new List<MeshTile>() { new MeshTile() { position = child.position, rotation = child.rotation, transform = child, mesh = child.GetComponent<MeshFilter>().mesh, materials = child.GetComponent<Renderer>().materials } } });
-            }
-            else
-            {
-                uniqueObjects.Find(x => x.ID == id).tiles.Add(new MeshTile() { position = child.position, rotation = child.rotation, transform = child, mesh = child.GetComponent<MeshFilter>().mesh, materials = child.GetComponent<Renderer>().materials });
-            }
-        }
-        foreach(MeshTileGroup group in uniqueObjects)
-        {
-            GameObject groupObject = Instantiate(new GameObject(), Parent.transform);
-            groupObject.AddComponent<MeshFilter>();
-            groupObject.AddComponent<MeshRenderer>();
-            groupObject.name = group.ID;
-            groupObject.tag = "RenderChild";
-
-            SmartMeshData[] meshData = new SmartMeshData[group.tiles.Count];
-            for (int i = 0; i < group.tiles.Count; i++)
-            {
-                meshData[i] = new SmartMeshData(group.tiles[i].mesh, group.tiles[i].materials, group.tiles[i].position, group.tiles[i].rotation);
-            }
-
-            Mesh combinedMesh = groupObject.GetComponent<MeshFilter>().mesh = new Mesh();
-            combinedMesh.name = "Combined Mesh";
-
-            combinedMesh.CombineMeshesSmart(meshData, out Material[] combinedMaterials);
-            groupObject.GetComponent<MeshRenderer>().sharedMaterials = combinedMaterials;
-
-            for (int i = 0; i < group.tiles.Count; i++)
-                Destroy(group.tiles[i].transform.gameObject);
-        }
-
-        string exportName = "WorldMap - " + (Directory.GetFiles(Application.dataPath + @"/Exports").Length);
-        if (useFBX)
-        {
-            exportName += ".fbx";
-            ModelExporter.ExportObjects(@"C:\Users\dvddv\Documents\PKU Editor Exports\" + exportName, GameObject.FindGameObjectsWithTag("RenderChild"));
-        }
-        else
-        {
-            objectExporter.ExportMesh(Parent);
-            //new ObjExporter().ExportMapToObj(@"C:\Users\dvddv\Documents\PKU Editor Exports", exportName);
-        }
+        bool useFBX = true;
+        new MapExport(GameObject.FindGameObjectsWithTag("EditObject")).Export();
     }
 
 

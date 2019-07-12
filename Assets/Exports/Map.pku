@@ -1,0 +1,1824 @@
+{
+    "Objects": [
+        {
+            "Position": {
+                "X": -5.5,
+                "Y": 0.00009999999747378752,
+                "Z": -3.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -5.5,
+                "Y": 0.00009999999747378752,
+                "Z": -4.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -5.5,
+                "Y": 0.00009999999747378752,
+                "Z": -5.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -5.5,
+                "Y": 0.00009999999747378752,
+                "Z": -6.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -5.5,
+                "Y": 0.00009999999747378752,
+                "Z": -7.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -5.5,
+                "Y": 0.00009999999747378752,
+                "Z": -8.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -5.5,
+                "Y": 0.00009999999747378752,
+                "Z": -9.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -5.5,
+                "Y": 0.00009999999747378752,
+                "Z": -10.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -4.5,
+                "Y": 0.00009999999747378752,
+                "Z": -3.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -4.5,
+                "Y": 0.00009999999747378752,
+                "Z": -4.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -4.5,
+                "Y": 0.00009999999747378752,
+                "Z": -5.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -4.5,
+                "Y": 0.00009999999747378752,
+                "Z": -6.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -4.5,
+                "Y": 0.00009999999747378752,
+                "Z": -7.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -4.5,
+                "Y": 0.00009999999747378752,
+                "Z": -8.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -4.5,
+                "Y": 0.00009999999747378752,
+                "Z": -9.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -4.5,
+                "Y": 0.00009999999747378752,
+                "Z": -10.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -3.5,
+                "Y": 0.00009999999747378752,
+                "Z": -3.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -3.5,
+                "Y": 0.00009999999747378752,
+                "Z": -4.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -3.5,
+                "Y": 0.00009999999747378752,
+                "Z": -5.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -3.5,
+                "Y": 0.00009999999747378752,
+                "Z": -6.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -3.5,
+                "Y": 0.00009999999747378752,
+                "Z": -7.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -3.5,
+                "Y": 0.00009999999747378752,
+                "Z": -8.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -3.5,
+                "Y": 0.00009999999747378752,
+                "Z": -9.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -3.5,
+                "Y": 0.00009999999747378752,
+                "Z": -10.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -2.5,
+                "Y": 0.00009999999747378752,
+                "Z": -3.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -2.5,
+                "Y": 0.00009999999747378752,
+                "Z": -4.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -2.5,
+                "Y": 0.00009999999747378752,
+                "Z": -5.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -2.5,
+                "Y": 0.00009999999747378752,
+                "Z": -6.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -2.5,
+                "Y": 0.00009999999747378752,
+                "Z": -7.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -2.5,
+                "Y": 0.00009999999747378752,
+                "Z": -8.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -2.5,
+                "Y": 0.00009999999747378752,
+                "Z": -9.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -2.5,
+                "Y": 0.00009999999747378752,
+                "Z": -10.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -1.5,
+                "Y": 0.00009999999747378752,
+                "Z": -3.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -1.5,
+                "Y": 0.00009999999747378752,
+                "Z": -4.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -1.5,
+                "Y": 0.00009999999747378752,
+                "Z": -5.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -1.5,
+                "Y": 0.00009999999747378752,
+                "Z": -6.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -1.5,
+                "Y": 0.00009999999747378752,
+                "Z": -7.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -1.5,
+                "Y": 0.00009999999747378752,
+                "Z": -8.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -1.5,
+                "Y": 0.00009999999747378752,
+                "Z": -9.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -1.5,
+                "Y": 0.00009999999747378752,
+                "Z": -10.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -0.5,
+                "Y": 0.00009999999747378752,
+                "Z": -3.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -0.5,
+                "Y": 0.00009999999747378752,
+                "Z": -4.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -0.5,
+                "Y": 0.00009999999747378752,
+                "Z": -5.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -0.5,
+                "Y": 0.00009999999747378752,
+                "Z": -6.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -0.5,
+                "Y": 0.00009999999747378752,
+                "Z": -7.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -0.5,
+                "Y": 0.00009999999747378752,
+                "Z": -8.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -0.5,
+                "Y": 0.00009999999747378752,
+                "Z": -9.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -0.5,
+                "Y": 0.00009999999747378752,
+                "Z": -10.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": 0.5,
+                "Y": 0.00009999999747378752,
+                "Z": -3.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": 0.5,
+                "Y": 0.00009999999747378752,
+                "Z": -4.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": 0.5,
+                "Y": 0.00009999999747378752,
+                "Z": -5.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": 0.5,
+                "Y": 0.00009999999747378752,
+                "Z": -6.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": 0.5,
+                "Y": 0.00009999999747378752,
+                "Z": -7.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": 0.5,
+                "Y": 0.00009999999747378752,
+                "Z": -8.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": 0.5,
+                "Y": 0.00009999999747378752,
+                "Z": -9.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": 0.5,
+                "Y": 0.00009999999747378752,
+                "Z": -10.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": 1.5,
+                "Y": 0.00009999999747378752,
+                "Z": -3.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": 1.5,
+                "Y": 0.00009999999747378752,
+                "Z": -4.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": 1.5,
+                "Y": 0.00009999999747378752,
+                "Z": -5.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": 1.5,
+                "Y": 0.00009999999747378752,
+                "Z": -6.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": 1.5,
+                "Y": 0.00009999999747378752,
+                "Z": -7.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": 1.5,
+                "Y": 0.00009999999747378752,
+                "Z": -8.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": 1.5,
+                "Y": 0.00009999999747378752,
+                "Z": -9.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": 1.5,
+                "Y": 0.00009999999747378752,
+                "Z": -10.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": 2.5,
+                "Y": 0.00009999999747378752,
+                "Z": -3.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": 2.5,
+                "Y": 0.00009999999747378752,
+                "Z": -4.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": 2.5,
+                "Y": 0.00009999999747378752,
+                "Z": -5.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": 2.5,
+                "Y": 0.00009999999747378752,
+                "Z": -6.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": 2.5,
+                "Y": 0.00009999999747378752,
+                "Z": -7.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": 2.5,
+                "Y": 0.00009999999747378752,
+                "Z": -8.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": 2.5,
+                "Y": 0.00009999999747378752,
+                "Z": -9.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": 2.5,
+                "Y": 0.00009999999747378752,
+                "Z": -10.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": 3.5,
+                "Y": 0.00009999999747378752,
+                "Z": -3.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": 3.5,
+                "Y": 0.00009999999747378752,
+                "Z": -4.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": 3.5,
+                "Y": 0.00009999999747378752,
+                "Z": -5.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": 3.5,
+                "Y": 0.00009999999747378752,
+                "Z": -6.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": 3.5,
+                "Y": 0.00009999999747378752,
+                "Z": -7.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": 3.5,
+                "Y": 0.00009999999747378752,
+                "Z": -8.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": 3.5,
+                "Y": 0.00009999999747378752,
+                "Z": -9.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": 3.5,
+                "Y": 0.00009999999747378752,
+                "Z": -10.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": 4.5,
+                "Y": 0.00009999999747378752,
+                "Z": -3.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": 4.5,
+                "Y": 0.00009999999747378752,
+                "Z": -4.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": 4.5,
+                "Y": 0.00009999999747378752,
+                "Z": -5.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": 4.5,
+                "Y": 0.00009999999747378752,
+                "Z": -6.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": 4.5,
+                "Y": 0.00009999999747378752,
+                "Z": -7.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": 4.5,
+                "Y": 0.00009999999747378752,
+                "Z": -8.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": 4.5,
+                "Y": 0.00009999999747378752,
+                "Z": -9.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": 4.5,
+                "Y": 0.00009999999747378752,
+                "Z": -10.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -9.5,
+                "Y": 0.0010000000474974514,
+                "Z": -14.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/grass4.png"
+        },
+        {
+            "Position": {
+                "X": -2.5,
+                "Y": 0.00009999999747378752,
+                "Z": -8.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 180.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/m_cliffCornerIn",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/TexCliff.png"
+        },
+        {
+            "Position": {
+                "X": 1.5,
+                "Y": 0.00009999999747378752,
+                "Z": -8.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 90.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/m_cliffCornerIn",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/TexCliff.png"
+        },
+        {
+            "Position": {
+                "X": -3.5,
+                "Y": 0.00009999999747378752,
+                "Z": -8.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 180.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/m_cliffCornerOut",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/TexCliff.png"
+        },
+        {
+            "Position": {
+                "X": -3.5,
+                "Y": 0.00009999999747378752,
+                "Z": -4.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 270.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/m_cliffCornerOut",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/TexCliff.png"
+        },
+        {
+            "Position": {
+                "X": 2.5,
+                "Y": 0.00009999999747378752,
+                "Z": -4.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/m_cliffCornerOut",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/TexCliff.png"
+        },
+        {
+            "Position": {
+                "X": 2.5,
+                "Y": 0.00009999999747378752,
+                "Z": -8.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 90.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/m_cliffCornerOut",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/TexCliff.png"
+        },
+        {
+            "Position": {
+                "X": -2.5,
+                "Y": 0.00009999999747378752,
+                "Z": -9.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 180.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/m_cliffCornerOut",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/TexCliff.png"
+        },
+        {
+            "Position": {
+                "X": 1.5,
+                "Y": 0.00009999999747378752,
+                "Z": -9.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 90.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/m_cliffCornerOut",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/TexCliff.png"
+        },
+        {
+            "Position": {
+                "X": -3.5,
+                "Y": 0.00009999999747378752,
+                "Z": -5.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 270.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/m_cliffSide",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/TexCliff.png"
+        },
+        {
+            "Position": {
+                "X": -3.5,
+                "Y": 0.00009999999747378752,
+                "Z": -6.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 270.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/m_cliffSide",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/TexCliff.png"
+        },
+        {
+            "Position": {
+                "X": -3.5,
+                "Y": 0.00009999999747378752,
+                "Z": -7.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 270.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/m_cliffSide",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/TexCliff.png"
+        },
+        {
+            "Position": {
+                "X": 2.5,
+                "Y": 0.00009999999747378752,
+                "Z": -5.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 90.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/m_cliffSide",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/TexCliff.png"
+        },
+        {
+            "Position": {
+                "X": 2.5,
+                "Y": 0.00009999999747378752,
+                "Z": -6.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 90.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/m_cliffSide",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/TexCliff.png"
+        },
+        {
+            "Position": {
+                "X": 2.5,
+                "Y": 0.00009999999747378752,
+                "Z": -7.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 90.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/m_cliffSide",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/TexCliff.png"
+        },
+        {
+            "Position": {
+                "X": 1.5,
+                "Y": 0.00009999999747378752,
+                "Z": -4.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/m_cliffSide",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/TexCliff.png"
+        },
+        {
+            "Position": {
+                "X": 0.5,
+                "Y": 0.00009999999747378752,
+                "Z": -4.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/m_cliffSide",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/TexCliff.png"
+        },
+        {
+            "Position": {
+                "X": -0.5,
+                "Y": 0.00009999999747378752,
+                "Z": -4.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/m_cliffSide",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/TexCliff.png"
+        },
+        {
+            "Position": {
+                "X": -2.5,
+                "Y": 0.00009999999747378752,
+                "Z": -4.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/m_cliffSide",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/TexCliff.png"
+        },
+        {
+            "Position": {
+                "X": -1.5,
+                "Y": 0.00009999999747378752,
+                "Z": -4.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/m_cliffSide",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/TexCliff.png"
+        },
+        {
+            "Position": {
+                "X": -5.5,
+                "Y": -1.9989999532699586,
+                "Z": -4.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/m_cliffSide",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/TexCliff.png"
+        },
+        {
+            "Position": {
+                "X": -1.5,
+                "Y": 0.00009999999747378752,
+                "Z": -9.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 180.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/m_stairLeft",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/TexStair.png"
+        },
+        {
+            "Position": {
+                "X": 0.5,
+                "Y": 0.00009999999747378752,
+                "Z": -9.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 180.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/m_stairRight",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/TexStair.png"
+        },
+        {
+            "Position": {
+                "X": -0.5,
+                "Y": 0.00009999999747378752,
+                "Z": -9.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 180.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/m_stairSide",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/TexStair.png"
+        },
+        {
+            "Position": {
+                "X": -2.5,
+                "Y": 1.0,
+                "Z": -5.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/cliff.png"
+        },
+        {
+            "Position": {
+                "X": -1.5,
+                "Y": 1.0,
+                "Z": -5.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/cliff.png"
+        },
+        {
+            "Position": {
+                "X": -0.5,
+                "Y": 1.0,
+                "Z": -5.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/cliff.png"
+        },
+        {
+            "Position": {
+                "X": 0.5,
+                "Y": 1.0,
+                "Z": -5.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/cliff.png"
+        },
+        {
+            "Position": {
+                "X": 1.5,
+                "Y": 1.0,
+                "Z": -5.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/cliff.png"
+        },
+        {
+            "Position": {
+                "X": 1.5,
+                "Y": 1.0,
+                "Z": -6.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/cliff.png"
+        },
+        {
+            "Position": {
+                "X": 0.5,
+                "Y": 1.0,
+                "Z": -6.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/cliff.png"
+        },
+        {
+            "Position": {
+                "X": -0.5,
+                "Y": 1.0,
+                "Z": -6.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/cliff.png"
+        },
+        {
+            "Position": {
+                "X": -1.5,
+                "Y": 1.0,
+                "Z": -6.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/cliff.png"
+        },
+        {
+            "Position": {
+                "X": -2.5,
+                "Y": 1.0,
+                "Z": -6.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/cliff.png"
+        },
+        {
+            "Position": {
+                "X": -2.5,
+                "Y": 1.0,
+                "Z": -7.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/cliff.png"
+        },
+        {
+            "Position": {
+                "X": -1.5,
+                "Y": 1.0,
+                "Z": -7.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/cliff.png"
+        },
+        {
+            "Position": {
+                "X": -0.5,
+                "Y": 1.0,
+                "Z": -7.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/cliff.png"
+        },
+        {
+            "Position": {
+                "X": 0.5,
+                "Y": 1.0,
+                "Z": -7.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/cliff.png"
+        },
+        {
+            "Position": {
+                "X": 1.5,
+                "Y": 1.0,
+                "Z": -7.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/cliff.png"
+        },
+        {
+            "Position": {
+                "X": 0.5,
+                "Y": 1.0,
+                "Z": -8.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/cliff.png"
+        },
+        {
+            "Position": {
+                "X": -0.5,
+                "Y": 1.0,
+                "Z": -8.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/cliff.png"
+        },
+        {
+            "Position": {
+                "X": -1.5,
+                "Y": 1.0,
+                "Z": -8.5
+            },
+            "Rotation": {
+                "X": 0.0,
+                "Y": 0.0,
+                "Z": 0.0
+            },
+            "ModelPath": "Assets/Resources/TerrainTiles/Models/terrainModels_flat",
+            "TexturePath": "Assets/Resources/TerrainTiles/Textures/cliff.png"
+        }
+    ]
+}
