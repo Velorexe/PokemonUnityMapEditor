@@ -77,6 +77,7 @@
     <Compile Include="Assets\Scripts\UI\GameobjectListItem.cs" />
     <Compile Include="Assets\Scripts\UI\MaterialList.cs" />
     <Compile Include="Assets\Scripts\UI\MaterialListItem.cs" />
+    <Compile Include="Assets\Scripts\UI\ShadowText.cs" />
     <Compile Include="Assets\Scripts\UI\TabFold.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>F:/Unity/PokemonUnity Editor/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
