@@ -591,7 +591,7 @@ public class EditorCamera : MonoBehaviour
 
     public void Save()
     {
-        new MapExport(GameObject.FindGameObjectsWithTag("EditObject")).Export();
+        new MapExport(GameObject.FindGameObjectsWithTag("EditObject"), ColliderParent.GetComponent<ColliderExport>().CollisionTransform.gameObject).Export();
     }
 
 

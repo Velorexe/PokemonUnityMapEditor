@@ -63,6 +63,18 @@ public class ImportMap : EditorWindow
                                 newObject.transform.position = new Vector3(mapObject.Position.X, mapObject.Position.Y, mapObject.Position.Z);
                                 newObject.transform.eulerAngles = new Vector3(mapObject.Rotation.X, mapObject.Rotation.Y, mapObject.Rotation.Z);
                             }
+
+                            Mesh colliderMap = new Mesh() { vertices = mapHolder.CollisionMap.GetVertices(), uv = mapHolder.CollisionMap.GetUV(), triangles = mapHolder.CollisionMap.Triangles, normals = mapHolder.CollisionMap.GetNormals() };
+
+                            colliderMap.name = "Combined Collider Map";
+
+                            Parent.gameObject.AddComponent<MeshCollider>();
+                            Parent.gameObject.GetComponent<MeshCollider>().sharedMesh = colliderMap;
+
+                            Parent.gameObject.AddComponent<MeshFilter>();
+                            Parent.gameObject.GetComponent<MeshFilter>().sharedMesh = colliderMap;
+
+                            Parent.gameObject.AddComponent<MeshRenderer>();
                         }
                     }
                 }
