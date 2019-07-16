@@ -11,20 +11,28 @@ using UnityEngine;
 
 using UnityEditor.Formats.Fbx.Exporter;
 
-using ProBuilder2.MeshOperations;
-using ProBuilder2.Common;
-using ProBuilder2;
-
 public class EditorCamera : MonoBehaviour
 {
     //Visible to Unity
     public LayerMask BuildMask;
     public GameObject CurrentObject;
+    public GameObject ColliderObject;
+
+    public Material ColliderWalkable;
+    public Material ColliderCollision;
+    public Material ColliderWater;
+
+    public Dropdown ColliderTypeDropDown;
 
     public Material StandardMaterial;
     public Shader StandardShader;
 
     public GameObject Parent;
+    public GameObject ColliderParent;
+
+    public GameObject Collision;
+    public GameObject Water;
+    public GameObject Walkable;
 
     public Text X;
     public Text Y;
@@ -34,9 +42,11 @@ public class EditorCamera : MonoBehaviour
     private Texture ObjectTexture;
 
     private GameObject ghostObject;
+    private GameObject previousGhostObject;
 
     public ButtonMenuItem CurrentItem;
     private EditStyle editStyle;
+    private ColliderType colliderType = ColliderType.WALKABLE;
 
     private DragTypes dragType = DragTypes.FREE;
     private bool isDragging;
@@ -120,6 +130,115 @@ public class EditorCamera : MonoBehaviour
                     }
                     isDragging = false;
                     dragPositionDone = false;
+                    break;
+                case EditStyle.COLLIDER:
+                    if (isDragging && dragGhostObjects.Count > 0)
+                    {
+                        foreach (GameObject dragObject in dragGhostObjects)
+                        {
+                            Transform newObjectParent = ColliderParent.transform;
+                            switch (colliderType)
+                            {
+                                case ColliderType.COLLIDER:
+                                    newObjectParent = Collision.transform;
+                                    break;
+                                case ColliderType.WATER:
+                                    newObjectParent = Water.transform;
+                                    break;
+                                case ColliderType.WALKABLE:
+                                    newObjectParent = Walkable.transform;
+                                    break;
+                            }
+                            GameObject newObject = Instantiate(CurrentObject, dragObject.transform.position, ghostObject.transform.rotation, newObjectParent);
+                            newObject.transform.position = new Vector3(newObject.transform.position.x, newObject.transform.position.y + 0.5f, newObject.transform.position.z);
+                            switch (colliderType)
+                            {
+                                case ColliderType.WALKABLE:
+                                    newObject.GetComponent<Renderer>().sharedMaterial = ColliderWalkable;
+                                    break;
+                                case ColliderType.COLLIDER:
+                                    newObject.GetComponent<Renderer>().sharedMaterial = ColliderCollision;
+                                    break;
+                                case ColliderType.WATER:
+                                    newObject.GetComponent<Renderer>().sharedMaterial = ColliderWater;
+                                    break;
+                                default:
+                                    break;
+                            }
+
+                            newObject.layer = LayerMask.NameToLayer("ColliderBlock");
+                            switch (colliderType)
+                            {
+                                case ColliderType.COLLIDER:
+                                    newObject.tag = "Collision";
+                                    break;
+                                case ColliderType.WALKABLE:
+                                    newObject.tag = "Walkable";
+                                    break;
+                                case ColliderType.WATER:
+                                    newObject.tag = "Water";
+                                    break;
+                            }
+
+                            if (newObject.GetComponent<Collider>() == null)
+                                newObject.AddComponent<MeshCollider>();
+
+                            Destroy(dragObject);
+                        }
+                        dragGhostObjects = new List<GameObject>();
+                    }
+                    else
+                    {
+                        Transform newObjectParent = ColliderParent.transform;
+                        switch (colliderType)
+                        {
+                            case ColliderType.COLLIDER:
+                                newObjectParent = Collision.transform;
+                                break;
+                            case ColliderType.WATER:
+                                newObjectParent = Water.transform;
+                                break;
+                            case ColliderType.WALKABLE:
+                                newObjectParent = Walkable.transform;
+                                break;
+                        }
+                        GameObject newObject = Instantiate(CurrentObject, ghostObject.transform.position, ghostObject.transform.rotation, newObjectParent);
+                        newObject.transform.position = new Vector3(newObject.transform.position.x, newObject.transform.position.y + 0.5f, newObject.transform.position.z);
+                        switch (colliderType)
+                        {
+                            case ColliderType.WALKABLE:
+                                newObject.GetComponent<Renderer>().sharedMaterial = ColliderWalkable;
+                                break;
+                            case ColliderType.COLLIDER:
+                                newObject.GetComponent<Renderer>().sharedMaterial = ColliderCollision;
+                                break;
+                            case ColliderType.WATER:
+                                newObject.GetComponent<Renderer>().sharedMaterial = ColliderWater;
+                                break;
+                            default:
+                                break;
+                        }
+
+                        newObject.layer = LayerMask.NameToLayer("ColliderBlock");
+                        switch (colliderType)
+                        {
+                            case ColliderType.COLLIDER:
+                                newObject.tag = "Collision";
+                                break;
+                            case ColliderType.WALKABLE:
+                                newObject.tag = "Walkable";
+                                break;
+                            case ColliderType.WATER:
+                                newObject.tag = "Water";
+                                break;
+                        }
+
+                        if (newObject.GetComponent<Collider>() == null)
+                            newObject.AddComponent<MeshCollider>();
+                    }
+                    isDragging = false;
+                    dragPositionDone = false;
+                    ColliderParent.GetComponent<ColliderExport>().CombineColliderMeshes();
                     break;
                 default:
                     break;
@@ -364,20 +483,50 @@ public class EditorCamera : MonoBehaviour
     public void SetEditType(ButtonMenuItem buttonItem)
     {
         editStyle = buttonItem.EditStyle;
+        if (editStyle != EditStyle.COLLIDER)
+            ColliderParent.SetActive(false);
+        else
+        {
+            ColliderParent.GetComponent<ColliderExport>().CombineColliderMeshes();
+            ColliderParent.SetActive(true);
+        }
         Color buttonHighlight = buttonItem.ButtonImage.color;
         CurrentItem.ButtonImage.color = buttonHighlight;
 
         buttonHighlight.a = 0;
         buttonItem.ButtonImage.color = buttonHighlight;
 
+        UpdateEditStyle(editStyle);
+
         editStyle = buttonItem.EditStyle;
         CurrentItem = buttonItem;
-        UpdateEditStyle();
     }
 
-    private void UpdateEditStyle()
+    public void SetColliderType()
     {
-        switch (editStyle)
+        colliderType = (ColliderType)Enum.Parse(typeof(ColliderType), ColliderTypeDropDown.options[ColliderTypeDropDown.value].text.ToUpper());
+        switch (colliderType)
+        {
+            case ColliderType.WALKABLE:
+                ghostObject.GetComponent<Renderer>().sharedMaterial = ColliderWalkable;
+                break;
+            case ColliderType.COLLIDER:
+                ghostObject.GetComponent<Renderer>().sharedMaterial = ColliderCollision;
+                break;
+            case ColliderType.WATER:
+                ghostObject.GetComponent<Renderer>().sharedMaterial = ColliderWater;
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void UpdateEditStyle(EditStyle newEditStyle)
+    {
+        if (editStyle == EditStyle.COLLIDER && editStyle != newEditStyle)
+            ghostObject = previousGhostObject;
+
+        switch (newEditStyle)
         {
             case EditStyle.INSPECT:
                 ghostObject.SetActive(false);
@@ -387,6 +536,39 @@ public class EditorCamera : MonoBehaviour
                 break;
             case EditStyle.OBJECT:
                 ghostObject.SetActive(true);
+                break;
+            case EditStyle.COLLIDER:
+
+                previousGhostObject = ghostObject;
+                CurrentObject = ColliderObject;
+
+                Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+                Physics.Raycast(mouseRay, out RaycastHit gridPosition, int.MaxValue, BuildMask);
+
+                Destroy(ghostObject);
+                ghostObject = Instantiate(CurrentObject, FixToGrid(gridPosition.point, CurrentObject.GetComponent<Renderer>().bounds.size.y / 2), new Quaternion());
+
+                //dragGhost.GetComponent<Renderer>().materials = new Material[] { new Material(ObjectTexture) };
+                Material newMaterial = new Material(Shader.Find("Standard")) { mainTexture = ObjectTexture };
+                ghostObject.GetComponent<Renderer>().sharedMaterial = newMaterial;
+                ghostObject.GetComponent<Renderer>().materials[0] = GhostifyMaterial(ghostObject.GetComponent<Renderer>().materials[0], 2);
+
+                switch (colliderType)
+                {
+                    case ColliderType.WALKABLE:
+                        ghostObject.GetComponent<Renderer>().material = ColliderWalkable;
+                        break;
+                    case ColliderType.COLLIDER:
+                        ghostObject.GetComponent<Renderer>().material = ColliderWalkable;
+                        break;
+                    case ColliderType.WATER:
+                        ghostObject.GetComponent<Renderer>().material = ColliderWalkable;
+                        break;
+                    default:
+                        break;
+                }
+                break;
+            default:
                 break;
         }
     }
@@ -410,8 +592,6 @@ public class EditorCamera : MonoBehaviour
 
     public void Save()
     {
-        //Hard coded value, only avaiable in Editor
-        bool useFBX = true;
         new MapExport(GameObject.FindGameObjectsWithTag("EditObject")).Export();
     }
 
@@ -426,6 +606,14 @@ public class EditorCamera : MonoBehaviour
     {
         OBJECT,
         PAINT,
-        INSPECT
+        INSPECT,
+        COLLIDER
+    }
+
+    public enum ColliderType
+    {
+        WALKABLE,
+        COLLIDER,
+        WATER
     }
 }

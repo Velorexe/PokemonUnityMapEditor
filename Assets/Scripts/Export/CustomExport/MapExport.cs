@@ -24,7 +24,7 @@ public class MapExport
 
     }
 
-    [System.Serializable]
+    [Serializable]
     public class MapHolder
     {
         public MapObject[] Objects;
@@ -38,7 +38,7 @@ public class MapExport
         }
     }
 
-    [System.Serializable]
+    [Serializable]
     public class MapObject
     {
         public SeriPose Position;
@@ -57,7 +57,7 @@ public class MapExport
         }
     }
 
-    [System.Serializable]
+    [Serializable]
     public class SeriPose
     {
         public float X;
