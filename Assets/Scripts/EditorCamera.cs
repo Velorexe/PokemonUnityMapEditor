@@ -401,7 +401,6 @@ public class EditorCamera : MonoBehaviour
         returnMaterial.DisableKeyword("_ALPHABLEND_ON");
         returnMaterial.DisableKeyword("_ALPHAPREMULTIPLY_ON");
         returnMaterial.renderQueue = 2450;
-        returnMaterial.renderQueue = 3000;
         return returnMaterial;
     }
 
